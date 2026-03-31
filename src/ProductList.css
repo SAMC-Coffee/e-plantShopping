@@ -144,7 +144,7 @@ h1.cart {
 	&:hover {
 		background-color: #20d529;
 	}
-	.added-to-cart {
+	&.added-to-cart {
 		background-color: grey; /* Grey when product is added */
 		cursor: default;
 	}

@@ -263,8 +263,6 @@ function ProductList({onHomeClick}) {
 		setAddedToCart((prevState) => ({...prevState, [product.name]: true}));
 	};
 
-	const handleRemoveFromCart = () => {};
-
 	return (
 		<div>
 			<div className='navbar'>
