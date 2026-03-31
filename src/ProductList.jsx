@@ -1,15 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import './ProductList.css';
 import CartItem from './CartItem';
-import { addItem } from './CartSlice';
-
 function ProductList({onHomeClick}) {
 	const [showCart, setShowCart] = useState(false);
 	const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
-	const [addedToCart, setAddedToCart] = useState({});
-	const cart = useSelector((state) => state.cart);
-	const dispatch = useDispatch();
 
 	const plantsArray = [
 		{
@@ -100,7 +94,8 @@ function ProductList({onHomeClick}) {
 				{
 					name: 'oregano',
 					image: 'https://cdn.pixabay.com/photo/2015/05/30/21/20/oregano-790702_1280.jpg',
-					description: 'The oregano plants contains compounds that can deter certain insects.',
+					description:
+						'The oregano plants contains compounds that can deter certain insects.',
 					cost: '$10'
 				},
 				{
@@ -112,7 +107,8 @@ function ProductList({onHomeClick}) {
 				{
 					name: 'Geraniums',
 					image: 'https://cdn.pixabay.com/photo/2012/04/26/21/51/flowerpot-43270_1280.jpg',
-					description: 'Known for their insect-repelling properties while adding a pleasant scent.',
+					description:
+						'Known for their insect-repelling properties while adding a pleasant scent.',
 					cost: '$20'
 				},
 				{
@@ -218,7 +214,6 @@ function ProductList({onHomeClick}) {
 			]
 		}
 	];
-
 	const styleObj = {
 		backgroundColor: '#4CAF50',
 		color: '#fff!important',
@@ -228,22 +223,16 @@ function ProductList({onHomeClick}) {
 		alignIems: 'center',
 		fontSize: '20px'
 	};
-
 	const styleObjUl = {
 		display: 'flex',
 		justifyContent: 'space-between',
 		alignItems: 'center',
 		width: '1100px'
 	};
-
 	const styleA = {
 		color: 'white',
 		fontSize: '30px',
 		textDecoration: 'none'
-	};
-
-	const calculateTotalQuantity = () => {
-		return CartItem ? CartItem.reduce((total, item) => total + item.quantity, 0) : 0;
 	};
 
 	const handleHomeClick = (e) => {
@@ -254,10 +243,7 @@ function ProductList({onHomeClick}) {
 	const handleCartClick = (e) => {
 		e.preventDefault();
 		setShowCart(true); // Set showCart to true when cart icon is clicked
-		console.log(calculateTotalQuantity);
-		
 	};
-
 	const handlePlantsClick = (e) => {
 		e.preventDefault();
 		setShowPlants(true); // Set showAboutUs to true when "About Us" link is clicked
@@ -268,22 +254,15 @@ function ProductList({onHomeClick}) {
 		e.preventDefault();
 		setShowCart(false);
 	};
-
-	const handleAddToCart = (product) => {
-		dispatch(addItem(product));
-		setAddedToCart((prevState) => ({...prevState, [product.name]: true}));
-	};
-
-	const handleRemoveFromCart = () => {
-
-	}
-
 	return (
 		<div>
 			<div className='navbar' style={styleObj}>
 				<div className='tag'>
 					<div className='luxury'>
-						<img src='https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_1280.png' alt='' />
+						<img
+							src='https://cdn.pixabay.com/photo/2020/08/05/13/12/eco-5465432_1280.png'
+							alt=''
+						/>
 						<a href='/' onClick={(e) => handleHomeClick(e)}>
 							<div>
 								<h3 style={{color: 'white'}}>Paradise Nursery</h3>
@@ -294,16 +273,15 @@ function ProductList({onHomeClick}) {
 				</div>
 				<div style={styleObjUl}>
 					<div>
+						{' '}
 						<a href='#' onClick={(e) => handlePlantsClick(e)} style={styleA}>
 							Plants
 						</a>
 					</div>
 					<div>
+						{' '}
 						<a href='#' onClick={(e) => handleCartClick(e)} style={styleA}>
 							<h1 className='cart'>
-								<text>
-									{cart.items.length}
-								</text>
 								<svg
 									xmlns='http://www.w3.org/2000/svg'
 									viewBox='0 0 256 256'
@@ -318,9 +296,9 @@ function ProductList({onHomeClick}) {
 										d='M42.3,72H221.7l-26.4,92.4A15.9,15.9,0,0,1,179.9,176H84.1a15.9,15.9,0,0,1-15.4-11.6L32.5,37.8A8,8,0,0,0,24.8,32H8'
 										fill='none'
 										stroke='#faf9f9'
-										strokeLinecap='round'
-										strokeLinejoin='round'
-										strokeWidth='2'
+										stroke-linecap='round'
+										stroke-linejoin='round'
+										stroke-width='2'
 										id='mainIconPathAttribute'
 									></path>
 								</svg>
@@ -330,34 +308,7 @@ function ProductList({onHomeClick}) {
 				</div>
 			</div>
 			{!showCart ? (
-				<div className='product-grid'>
-					{plantsArray.map((category, index) => (
-						<div key={index}>
-							<h1 className='category'>
-								<div>{category.category}</div>
-							</h1>
-							<div className='product-list'>
-								{category.plants.map((plant, plantIndex) => (
-									<div className='product-card' key={plantIndex}>
-										<img className='product-image' src={plant.image} alt={plant.name} />
-										<div className='product-title'>{plant.name}</div>
-										<div className='product-description'>{plant.description}</div>
-										<div className='product-cost'>{plant.cost}</div>
-										{addedToCart[plant.name] ? (
-											<button className={'product-button added-to-cart'} disabled={true}>
-												Added To Cart
-											</button>
-										) : (
-											<button className={'product-button'} onClick={() => handleAddToCart(plant)}>
-												Add to Cart
-											</button>
-										)}
-									</div>
-								))}
-							</div>
-						</div>
-					))}
-				</div>
+				<div className='product-grid'></div>
 			) : (
 				<CartItem onContinueShopping={handleContinueShopping} />
 			)}
