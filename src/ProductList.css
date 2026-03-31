@@ -41,17 +41,6 @@ body {
 }
 
 /* Product Grid */
-h1.category {
-	text-align: center;
-	padding: 20px 0 0 0;
-	div {
-		border-top: 2px solid black; /* Line above */
-		border-bottom: 2px solid black; /* Line below */
-		padding: 5px 50px; /* Space between text and lines */
-		display: inline-block;
-	}
-}
-
 .product-grid {
 	display: flex;
 	flex-direction: column;
@@ -59,7 +48,6 @@ h1.category {
 	align-items: center;
 	justify-content: center;
 }
-
 .product-list {
 	display: flex;
 	flex-wrap: wrap;
@@ -135,7 +123,6 @@ h1.category {
 	padding: 5px 10px;
 	border-radius: 0 0 0 5px;
 }
-
 .tag_home_link {
 	display: flex;
 	/* background-color: red; */
@@ -147,15 +134,12 @@ h1.category {
 	text-decoration: none;
 	font-size: 20px;
 }
-
 .tag_home_link h3 {
 	font-size: 30px;
 }
-
 .tag a {
 	text-decoration: none;
 }
-
 .tag {
 	width: 400px;
 	display: flex;
@@ -176,12 +160,10 @@ h1.category {
 	width: 650px;
 	font-size: 19px;
 }
-
 .cart {
 	color: white;
 	display: flex;
 }
-
 .cart_quantity_count {
 	margin-top: 16px;
 	/* background-color: red; */
@@ -189,14 +171,12 @@ h1.category {
 	position: absolute;
 	font-size: 29px;
 }
-
 .plantname_heading {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	/* background-color: yellow; */
 }
-
 .plant_heading {
 	width: 400px;
 	text-align: center;
@@ -205,12 +185,13 @@ h1.category {
 	border-left: none;
 	border-right: none;
 }
-
 /* Add Media Query for responsiveness */
 @media (max-width: 768px) {
 	.product-card {
 		flex: 1 1 calc(50% - 20px); /* Adjust width for 2 cards per row with 20px gap on smaller screens */
-		max-width: calc(50% - 20px); /* Adjust max-width for 2 cards per row with 20px gap on smaller screens */
+		max-width: calc(
+			50% - 20px
+		); /* Adjust max-width for 2 cards per row with 20px gap on smaller screens */
 	}
 }
 /* ProductList.css */
@@ -235,22 +216,23 @@ h1.category {
 
 .product-button.added-to-cart {
 	background-color: grey; /* Grey when product is added */
-	cursor: default;
 }
-
 @media (max-width: 1200px) {
 	.product-card {
 		flex: 1 1 calc(33.33% - 20px); /* Adjust width for 3 cards per row with 20px gap on medium screens */
-		max-width: calc(33.33% - 20px); /* Adjust max-width for 3 cards per row with 20px gap on medium screens */
+		max-width: calc(
+			33.33% - 20px
+		); /* Adjust max-width for 3 cards per row with 20px gap on medium screens */
 	}
 }
 
 @media (max-width: 768px) {
 	.product-card {
 		flex: 1 1 calc(50% - 20px); /* Adjust width for 2 cards per row with 20px gap on small screens */
-		max-width: calc(50% - 20px); /* Adjust max-width for 2 cards per row with 20px gap on small screens */
+		max-width: calc(
+			50% - 20px
+		); /* Adjust max-width for 2 cards per row with 20px gap on small screens */
 	}
-
 	.navbar {
 		flex-direction: column; /* Change flex direction to stack items vertically */
 		align-items: center; /* Align items to the center of the container */
